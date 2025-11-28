@@ -167,4 +167,5 @@ The system successfully demonstrates:
    - Adaptable to other industrial IoT scenarios  
 
 
-# Result: The corresponding Prompt is executed successfully.
+# Result:  
+The corresponding Prompt is executed successfully.
