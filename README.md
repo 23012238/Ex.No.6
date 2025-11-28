@@ -31,18 +31,29 @@ def fetch_farm_sensor_data():
 ### **2. AI Tools Integration**
 ```python
 # Hugging Face Sentiment Analysis
-def analyze_sentiment(texts):
-    analyzer = pipeline("sentiment-analysis")
-    return [analyzer(text)[0] for text in texts]
+from transformers import pipeline
+
+def extract_entities(texts):
+    ner_model = pipeline("ner", grouped_entities=True)
+    return [ner_model(text) for text in texts]
+
 
 # OpenAI Summarization
-def generate_summary(text, api_key):
+import openai
+
+def classify_risk_level(alert_text, api_key):
     openai.api_key = api_key
+
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
-        messages=[{"role":"user", "content":f"Summarize these alerts: {text}"}]
+        messages=[
+            {"role": "system", "content": "You are a risk classification assistant."},
+            {"role": "user", "content": f"Classify the risk level of this alert as Low, Medium, or High:\n{alert_text}"}
+        ]
     )
-    return response.choices[0].message['content']
+
+    return response.choices[0].message["content"]
+
 ```
 
 ### **3. Comparison & Insight Generation**
