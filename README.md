@@ -132,7 +132,7 @@ if __name__ == "__main__":
 
 ## **Input Prompt:**
 
-"Write a Python program that fetches simulated warehouse robot alert data, uses Hugging Face Transformers to analyze sentiment for each alert, and uses OpenAI GPT (via API) to summarize the alerts. Based on sentiment and operational status, generate maintenance recommendations. The output should display individual alerts with sentiment scores, a summary of events, and a final recommendation. Use a modular structure with clearly defined functions for data fetching, sentiment analysis, OpenAI summarization, and insight generation."
+"Write a Python program that fetches simulated warehouse robot alert data, analyzes the sentiment of each alert using the Hugging Face Transformers sentiment-analysis pipeline, and generates a summary of all alerts using the OpenAI GPT API. The program must follow a modular structure with separate functions for (1) data fetching, (2) sentiment analysis, (3) OpenAI summarization, and (4) insight generation. Based on the sentiment analysis results and the operational status of the warehouse, the program should generate maintenance recommendations. The final output should clearly display each alert with its sentiment score, the AI-generated summary, and a final recommendation for warehouse maintenance."
 
 ## **Output:**
 ```
