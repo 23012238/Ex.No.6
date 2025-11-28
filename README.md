@@ -137,14 +137,16 @@ if __name__ == "__main__":
 ## **Output:**
 ```
 === Warehouse AI Report ===
-Collision alert in Aisle B3 (NEGATIVE 0.97)
-Battery low on Robot #AX-12 (NEGATIVE 0.89)
-Package sorted in Zone 5 (POSITIVE 0.95)
+Overheating detected in Robot Unit R7 (NEGATIVE 0.92)
+Navigation delay in Aisle C2 (NEGATIVE 0.76)
+Inventory scan completed successfully in Zone 4 (POSITIVE 0.98)
 
-AI Summary: The system reports two critical alerts (collision and low battery) 
-and one successful package sorting operation.
+AI Summary: The system detected two performance-related issues 
+(overheating and navigation delay) along with one completed inventory scan.
+Overall activity indicates the need for system inspection.
 
-Recommendation: Immediate maintenance
+Recommendation: Routine check
+
 ```
 
 ---
