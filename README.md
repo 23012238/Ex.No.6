@@ -56,15 +56,29 @@ def classify_risk_level(alert_text, api_key):
 
 ```
 
-### **3. Comparison & Insight Generation**
+### **3. Insight Generation Based on Entity Extraction + Risk Classification**
 ```python
-def generate_insights(data, sentiments, summary):
-    critical = sum(1 for s in sentiments if s['label']=='NEGATIVE')
+def generate_advanced_insights(data, entities, risk_levels):
+    # Count how many alerts are classified as HIGH risk
+    high_risk_count = sum(1 for r in risk_levels if "High" in r)
+
+    # Count how many locations (from entity extraction)
+    locations = []
+    for item in entities:
+        for ent in item:
+            if ent['entity_group'] == 'LOC':   # location entities
+                locations.append(ent['word'])
+
     return {
-        "critical_alerts": critical,
-        "operational_status": data["status"],
-        "recommendation": "Immediate maintenance" if critical > 1 else "Routine check"
+        "total_alerts": len(risk_levels),
+        "high_risk_alerts": high_risk_count,
+        "affected_locations": list(set(locations)),
+        "system_condition": "Critical" if high_risk_count >= 2 else "Stable",
+        "action_plan": "Deploy emergency response team"
+                        if high_risk_count >= 2
+                        else "Monitor regularly and schedule inspection"
     }
+
 ```
 
 ### **4. Complete Workflow**
