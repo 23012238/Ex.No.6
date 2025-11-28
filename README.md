@@ -12,17 +12,20 @@ compare outputs, and generate actionable insights.
 
 ## **Algorithm & Implementation**
 
-### **1. API Data Fetching (Simulated)**
+### **1. Simulated API Data Fetching for a Smart Farming System**
 ```python
-def fetch_warehouse_data():
+import random
+
+def fetch_farm_sensor_data():
     return {
-        "robot_alerts": [
-            "Collision alert in Aisle B3",
-            "Battery low on Robot #AX-12",
-            "Package sorted in Zone 5"
+        "sensor_alerts": [
+            "Soil moisture low in Field A",
+            "Temperature rising above normal",
+            "Water pump active in Sector 3"
         ],
-        "status": random.choice(["Operational", "Maintenance_Needed"])
+        "farm_status": random.choice(["Healthy", "Irrigation_Required", "Critical"])
     }
+
 ```
 
 ### **2. AI Tools Integration**
