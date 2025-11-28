@@ -84,25 +84,35 @@ def generate_advanced_insights(data, entities, risk_levels):
 ### **4. Complete Workflow**
 ```python
 def main():
-    # 1. Fetch Data
-    data = fetch_warehouse_data()
-    
+    # 1. Fetch Sensor Data
+    data = fetch_farm_sensor_data()
+
     # 2. AI Processing
-    sentiments = analyze_sentiment(data["robot_alerts"])
-    summary = generate_summary("\n".join(data["robot_alerts"]), "your_openai_key")
-    
+    entities = extract_entities(data["sensor_alerts"])
+    risk_levels = [classify_risk_level(alert, "your_openai_key")
+                   for alert in data["sensor_alerts"]]
+
     # 3. Generate Insights
-    insights = generate_insights(data, sentiments, summary)
-    
+    insights = generate_advanced_insights(data, entities, risk_levels)
+
     # 4. Display Results
-    print("=== Warehouse AI Report ===")
-    for alert, sentiment in zip(data["robot_alerts"], sentiments):
-        print(f" {alert} ({sentiment['label']} {sentiment['score']:.2f})")
-    print(f"\n  AI Summary: {summary}")
-    print(f"\n  Recommendation: {insights['recommendation']}")
+    print("=== Smart Farming AI Report ===")
+    for alert, risk in zip(data["sensor_alerts"], risk_levels):
+        print(f" • {alert} → Risk: {risk}")
+
+    print("\nExtracted Entities:")
+    for i, ent_set in enumerate(entities):
+        print(f" Alert {i+1}: {ent_set}")
+
+    print("\nSystem Condition:", insights["system_condition"])
+    print("High-Risk Alerts:", insights["high_risk_alerts"])
+    print("Affected Locations:", insights["affected_locations"])
+    print("Action Plan:", insights["action_plan"])
+
 
 if __name__ == "__main__":
     main()
+
 ```
 
 ---
